@@ -24,9 +24,6 @@
     "tailwind-merge": "^2.5.4",
     "zod": "^3.23.8"
   },
-  "optionalDependencies": {
-    "@next/swc-win32-x64-msvc": "14.2.18"
-  },
   "devDependencies": {
     "@types/geojson": "^7946.0.14",
     "@types/node": "^20.17.6",
