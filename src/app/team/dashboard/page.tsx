@@ -68,7 +68,7 @@ export default function TeamDashboardPage() {
     <div className="min-h-screen bg-navy text-foreground flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         {/* Rescue Team Operational Header */}
         <div className="p-5 rounded-2xl bg-midnight border border-cobalt/30 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">

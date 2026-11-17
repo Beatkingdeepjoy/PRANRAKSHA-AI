@@ -3,7 +3,7 @@ import { ShieldAlert, PhoneCall, AlertTriangle, Radio, Heart } from "lucide-reac
 
 export default function Footer() {
   return (
-    <footer className="border-t border-cobalt/20 bg-midnight text-slate-300 mb-16 lg:mb-0">
+    <footer className="border-t border-cobalt/20 bg-midnight text-slate-300">
       {/* Critical Emergency Disclaimer Banner */}
       <div className="bg-critical/15 border-b border-critical/30 px-4 py-3">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
@@ -32,11 +32,11 @@ export default function Footer() {
             <span className="text-base font-bold text-white tracking-wide">PRANRAKSHA AI</span>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
-            Predict Danger. Connect Help. Save Lives. Next-generation emergency intelligence connecting citizens, rescue agencies (NDRF, TSR, Red Cross), and GIS road intelligence during critical disasters.
+            Predict Danger. Connect Help. Save Lives. Next-generation emergency intelligence connecting citizens, rescue agencies (NDRF, SDRF, Red Cross), and GIS road intelligence during critical disasters.
           </p>
           <div className="flex items-center gap-2 text-xs text-emerald-400">
             <Radio className="h-3 w-3 animate-pulse" />
-            <span>Telemetry online: Tripura River Basins (Howrah & Gomati)</span>
+            <span>Telemetry online: Brahmaputra River Basin</span>
           </div>
         </div>
 

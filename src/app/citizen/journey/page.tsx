@@ -20,7 +20,7 @@ import {
 export default function JourneyGuardianPage() {
   const { emergencyContacts, activeJourney, currentUser, logAction } = usePranrakshaStore();
 
-  const [destination, setDestination] = useState("Dasarath Deb Memorial Relief Hub, Banamalipur, Agartala");
+  const [destination, setDestination] = useState("Amingaon Relief Hub, North Guwahati");
   const [etaMinutes, setEtaMinutes] = useState(45);
   const [checkinInterval, setCheckinInterval] = useState(15);
   const [isJourneyActive, setIsJourneyActive] = useState(true);
@@ -80,7 +80,7 @@ export default function JourneyGuardianPage() {
     <div className="min-h-screen bg-navy text-foreground flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-4xl w-full mx-auto px-4 py-8 pb-24 lg:pb-8 space-y-6">
+      <main className="flex-1 max-w-4xl w-full mx-auto px-4 py-8 space-y-6">
         <div className="flex items-center justify-between border-b border-cobalt/20 pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-wider">

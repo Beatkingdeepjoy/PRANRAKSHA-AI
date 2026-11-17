@@ -1215,7 +1215,7 @@ export default function MapComponent({
 
       {/* Selected Item Floating Detail Card */}
       {selectedItem && (
-        <div className="absolute bottom-20 lg:bottom-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 rounded-2xl bg-midnight/95 border border-cobalt/40 p-4 shadow-2xl backdrop-blur-md z-30 animate-in fade-in slide-in-from-bottom-3 text-xs">
+        <div className="absolute bottom-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-96 rounded-2xl bg-midnight/95 border border-cobalt/40 p-4 shadow-2xl backdrop-blur-md z-30 animate-in fade-in slide-in-from-bottom-3 text-xs">
           <div className="flex items-center justify-between border-b border-cobalt/20 pb-2">
             <span className="font-mono text-[10px] uppercase tracking-wider text-sky-400 font-bold flex items-center gap-1.5">
               <Activity className="h-3 w-3" />

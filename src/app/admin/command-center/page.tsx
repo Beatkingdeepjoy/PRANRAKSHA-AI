@@ -49,7 +49,6 @@ export default function CommandCenterPage() {
   const [selectedIncidentId, setSelectedIncidentId] = useState<string | null>(
     incidents[0]?.id || null
   );
-  const [mobileTab, setMobileTab] = useState<"incidents" | "map" | "details">("map");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedSeverity, setSelectedSeverity] = useState<string>("all");
@@ -135,51 +134,10 @@ export default function CommandCenterPage() {
         </div>
       </div>
 
-      {/* Mobile Screen Tab Navigation (< lg) */}
-      <div className="lg:hidden flex items-center bg-midnight/95 border-b border-cobalt/30 p-1.5 gap-1 text-xs">
-        <button
-          type="button"
-          onClick={() => setMobileTab("incidents")}
-          className={`flex-1 py-2 px-1 text-center font-bold rounded-xl transition-all ${
-            mobileTab === "incidents"
-              ? "bg-cobalt text-white shadow-md border border-sky-400/40"
-              : "text-slate-400 hover:text-white"
-          }`}
-        >
-          Queue ({filteredIncidents.length})
-        </button>
-        <button
-          type="button"
-          onClick={() => setMobileTab("map")}
-          className={`flex-1 py-2 px-1 text-center font-bold rounded-xl transition-all ${
-            mobileTab === "map"
-              ? "bg-cobalt text-white shadow-md border border-sky-400/40"
-              : "text-slate-400 hover:text-white"
-          }`}
-        >
-          GIS Radar Map
-        </button>
-        <button
-          type="button"
-          onClick={() => setMobileTab("details")}
-          className={`flex-1 py-2 px-1 text-center font-bold rounded-xl transition-all ${
-            mobileTab === "details"
-              ? "bg-cobalt text-white shadow-md border border-sky-400/40"
-              : "text-slate-400 hover:text-white"
-          }`}
-        >
-          Triage & Dispatch
-        </button>
-      </div>
-
       {/* Main 3-Column Command Centre Body */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left Triage & Filter Sidebar (320px) */}
-        <aside
-          className={`w-full lg:w-80 border-r border-cobalt/20 bg-midnight/90 flex-col overflow-hidden ${
-            mobileTab === "incidents" ? "flex" : "hidden lg:flex"
-          }`}
-        >
+        <aside className="w-80 border-r border-cobalt/20 bg-midnight/90 flex flex-col overflow-hidden">
           {/* Search & Filter Header */}
           <div className="p-3 border-b border-cobalt/20 space-y-2">
             <div className="relative">
@@ -233,10 +191,7 @@ export default function CommandCenterPage() {
               return (
                 <button
                   key={inc.id}
-                  onClick={() => {
-                    setSelectedIncidentId(inc.id);
-                    setMobileTab("details");
-                  }}
+                  onClick={() => setSelectedIncidentId(inc.id)}
                   className={`w-full text-left p-3 rounded-xl border transition-all ${
                     isSelected
                       ? "bg-cobalt/20 border-cobalt ring-1 ring-sky-400 shadow-md"
@@ -276,11 +231,7 @@ export default function CommandCenterPage() {
         </aside>
 
         {/* Centre GIS Tactical Map (Flexible Width) */}
-        <main
-          className={`flex-1 relative flex-col overflow-hidden min-h-0 ${
-            mobileTab === "map" ? "flex" : "hidden lg:flex"
-          }`}
-        >
+        <main className="flex-1 relative flex flex-col overflow-hidden min-h-0">
           <div className="flex-1 relative min-h-[400px]">
             <MapComponent
               incidents={filteredIncidents}
@@ -290,10 +241,7 @@ export default function CommandCenterPage() {
               hazardZones={hazardZones}
               roadReports={roadReports}
               selectedIncidentId={selectedIncidentId}
-              onSelectIncident={(inc) => {
-                setSelectedIncidentId(inc.id);
-                setMobileTab("details");
-              }}
+              onSelectIncident={(inc) => setSelectedIncidentId(inc.id)}
               centerLat={23.8315}
               centerLng={91.2868}
               zoomLevel={12}
@@ -325,29 +273,7 @@ export default function CommandCenterPage() {
         </main>
 
         {/* Right Incident Deep-Dive & Quick Dispatch Panel (360px) */}
-        <aside
-          className={`w-full lg:w-96 border-l border-cobalt/20 bg-midnight/90 flex-col overflow-y-auto p-4 space-y-4 pb-24 lg:pb-4 ${
-            mobileTab === "details" ? "flex" : "hidden lg:flex"
-          }`}
-        >
-          {/* Quick Mobile Back Navigation */}
-          <div className="lg:hidden flex items-center justify-between pb-2 border-b border-cobalt/20">
-            <button
-              type="button"
-              onClick={() => setMobileTab("incidents")}
-              className="text-xs text-sky-400 hover:text-white font-bold flex items-center gap-1"
-            >
-              ← Back to Queue
-            </button>
-            <button
-              type="button"
-              onClick={() => setMobileTab("map")}
-              className="text-xs text-emerald-400 hover:text-white font-bold flex items-center gap-1"
-            >
-              View on Map →
-            </button>
-          </div>
-
+        <aside className="w-96 border-l border-cobalt/20 bg-midnight/90 flex flex-col overflow-y-auto p-4 space-y-4">
           {selectedIncident ? (
             <div className="space-y-4">
               {/* Header */}
