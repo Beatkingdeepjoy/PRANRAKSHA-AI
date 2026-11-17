@@ -27,7 +27,7 @@ git status
 git commit -m "feat(core): initial production release of PRANRAKSHA AI"
 
 # Link your GitHub remote repository
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/PRANRAKSHA-AI.git
+git remote add origin https://github.com/Beatkingdeepjoy/PRANRAKSHA-AI.git
 
 # Set default branch to main and push
 git branch -M main
