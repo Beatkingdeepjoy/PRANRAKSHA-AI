@@ -37,9 +37,9 @@ const STORAGE_KEY_PREFIX = "pranraksha_";
 // Default authenticated operational profile for Tripura State EOC
 export const DEFAULT_USER: UserProfile = {
   id: "usr-tripura-01",
-  fullName: "Pinaki Bhattacharjee",
+  fullName: "Ram Chandra Bhattacharjee",
   phone: "+91 94361 12345",
-  email: "pinaki.bhattacharjee@pranraksha.gov.in",
+  email: "ram.chandra@pranraksha.gov.in",
   role: "operator", // citizen | volunteer | team_member | operator | admin | super_admin
   organization: "State Emergency Operations Centre (SEOC) Agartala, Tripura",
   badgeNumber: "SEOC-TR-402",
@@ -132,28 +132,28 @@ export function usePranrakshaStore() {
         role,
         fullName:
           role === "citizen"
-            ? "Subrata Debbarma (Citizen, Agartala)"
+            ? "Ram Chandra Debbarma (Citizen, Agartala)"
             : role === "volunteer"
-            ? "Ananya Roy (Aapda Mitra Volunteer)"
+            ? "Laxman Chandra Roy (Aapda Mitra Volunteer)"
             : role === "team_member"
-            ? "Inspector Alok Kumar (NDRF Detachment Lead)"
+            ? "Inspector Dasharath Kumar (NDRF Detachment Lead)"
             : role === "operator"
-            ? "Pinaki Bhattacharjee (SEOC Agartala Dispatcher)"
+            ? "Ram Chandra Bhattacharjee (SEOC Agartala Dispatcher)"
             : role === "admin"
-            ? "Sudip Paul (District Disaster Mgmt Officer)"
-            : "Dr. P. K. Debbarma (Director, Tripura SDMA)",
+            ? "Bharat Chandra Paul (District Disaster Mgmt Officer)"
+            : "Dr. Shatrughan Chandra Debbarma (Director, Tripura SDMA)",
         email:
           role === "citizen"
-            ? "subrata.debbarma@citizen.tripura.in"
+            ? "ram.chandra@citizen.tripura.in"
             : role === "volunteer"
-            ? "ananya.roy@aapdamitra.tripura.org"
+            ? "laxman.chandra@aapdamitra.tripura.org"
             : role === "team_member"
-            ? "alok.kumar@ndrf.gov.in"
+            ? "dasharath.kumar@ndrf.gov.in"
             : role === "operator"
-            ? "pinaki.bhattacharjee@pranraksha.gov.in"
+            ? "ram.chandra@pranraksha.gov.in"
             : role === "admin"
-            ? "sudip.paul@tripura.gov.in"
-            : "pk.debbarma@sdma.tripura.gov.in",
+            ? "bharat.paul@tripura.gov.in"
+            : "shatrughan.debbarma@sdma.tripura.gov.in",
         organization:
           role === "citizen"
             ? "General Citizen Portal"
@@ -187,16 +187,16 @@ export function usePranrakshaStore() {
       const name =
         fullName ||
         (role === "citizen"
-          ? "Subrata Debbarma (Citizen)"
+          ? "Ram Chandra Debbarma (Citizen)"
           : role === "volunteer"
-          ? "Ananya Roy (Volunteer)"
+          ? "Laxman Chandra Roy (Volunteer)"
           : role === "team_member"
-          ? "Inspector Alok Kumar (NDRF)"
+          ? "Inspector Dasharath Kumar (NDRF)"
           : role === "operator"
-          ? "Pinaki Bhattacharjee (Dispatcher)"
+          ? "Ram Chandra Bhattacharjee (Dispatcher)"
           : role === "admin"
-          ? "Sudip Paul (Admin)"
-          : "Dr. P. K. Debbarma (Super Admin)");
+          ? "Bharat Chandra Paul (Admin)"
+          : "Dr. Shatrughan Chandra Debbarma (Super Admin)");
 
       const user: UserProfile = {
         id: `usr-${Date.now()}`,

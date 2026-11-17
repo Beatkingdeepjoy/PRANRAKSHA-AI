@@ -49,7 +49,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     accessibilityNotes: "Motorable roads completely submerged. Approachable only via motorized inflatable rescue boats through Baldakhal canal.",
     reporter: {
       id: "usr-701",
-      name: "Subrata Debbarma",
+      name: "Ram Chandra Debbarma",
       phone: "+91 94361 28941",
     },
     assignedTeamId: "team-001",
@@ -65,7 +65,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
       "https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80",
     ],
     internalNotes: [
-      "21:48 - Verified by Operator Pinaki via live drone feed and geo-triangulation.",
+      "21:48 - Verified by Operator Ram Chandra via live drone feed and geo-triangulation.",
       "21:55 - Dispatched NDRF 1st Bn with 3 inflatable Zodiac boats and life jackets.",
       "22:30 - Team on site. 34 citizens safely shifted to Dasarath Deb Stadium Relief Hub.",
     ],
@@ -97,7 +97,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     accessibilityNotes: "NH-8 blocked in both directions. JCB earthmovers and hydraulic cutters deployed from Teliamura depot.",
     reporter: {
       id: "usr-702",
-      name: "Pradip Bhowmik (Bus Driver)",
+      name: "Laxman Chandra Bhowmik (Bus Driver)",
       phone: "+91 98620 54112",
     },
     assignedTeamId: "team-002",
@@ -141,7 +141,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     accessibilityNotes: "Approach only by high-power outboard motor rescue boats via Udaipur barrage bank.",
     reporter: {
       id: "usr-703",
-      name: "Bijoy Jamatia",
+      name: "Dasharath Jamatia",
       phone: "+91 97740 68291",
     },
     assignedTeamId: "team-004",
@@ -180,7 +180,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     accessibilityNotes: "Emergency ambulances diverted via Colonel Chowmuhani. Heavy dewatering pumps in operation.",
     reporter: {
       id: "usr-704",
-      name: "Dr. Anirban Roy (Resident Medical Officer)",
+      name: "Dr. Bharat Chandra Roy (Resident Medical Officer)",
       phone: "+91 94364 81023",
     },
     assignedTeamId: "team-003",
@@ -218,7 +218,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     medicalNeeded: true,
     reporter: {
       id: "usr-705",
-      name: "Mousumi Paul (Ward Councillor)",
+      name: "Shatrughan Chandra Paul (Ward Councillor)",
       phone: "+91 98630 42918",
     },
     assignedTeamId: "team-005",
@@ -251,7 +251,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     medicalNeeded: false,
     reporter: {
       id: "usr-706",
-      name: "Tapan Das (TSECL Sub-Inspector)",
+      name: "Hanuman Prasad Das (TSECL Sub-Inspector)",
       phone: "+91 97741 33201",
     },
     aiPriorityScore: 82,
@@ -285,7 +285,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     medicalNeeded: true,
     reporter: {
       id: "usr-707",
-      name: "Dr. Barnali Choudhury (MOIC)",
+      name: "Dr. Ram Chandra Choudhury (MOIC)",
       phone: "+91 94365 29011",
     },
     assignedTeamId: "team-001",
@@ -318,7 +318,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     medicalNeeded: false,
     reporter: {
       id: "usr-708",
-      name: "Karan Debbarma (Panchayat Pradhan)",
+      name: "Laxman Chandra Debbarma (Panchayat Pradhan)",
       phone: "+91 98622 10984",
     },
     aiPriorityScore: 74,
@@ -348,7 +348,7 @@ export const INITIAL_INCIDENTS: Incident[] = [
     medicalNeeded: false,
     reporter: {
       id: "usr-709",
-      name: "Inspector Biplab Paul",
+      name: "Inspector Dasharath Paul",
       phone: "+91 94361 77102",
     },
     assignedTeamId: "team-003",
@@ -388,7 +388,7 @@ export const INITIAL_RESCUE_TEAMS: RescueTeam[] = [
       lastUpdated: "2026-11-16T23:30:00Z",
     },
     teamLead: {
-      name: "Assistant Commandant Alok Kumar",
+      name: "Assistant Commandant Ram Chandra Sharma",
       phone: "+91 94361 00101",
       rank: "Assistant Commandant",
     },
@@ -421,7 +421,7 @@ export const INITIAL_RESCUE_TEAMS: RescueTeam[] = [
       lastUpdated: "2026-11-16T23:25:00Z",
     },
     teamLead: {
-      name: "Subedar Major Kamal Debbarma",
+      name: "Subedar Major Laxman Chandra Debbarma",
       phone: "+91 94361 00202",
       rank: "Subedar Major",
     },
@@ -454,7 +454,7 @@ export const INITIAL_RESCUE_TEAMS: RescueTeam[] = [
       lastUpdated: "2026-11-16T23:20:00Z",
     },
     teamLead: {
-      name: "Station Officer Manoranjan Das",
+      name: "Station Officer Dasharath Das",
       phone: "+91 94361 00303",
       rank: "Station Officer",
     },
@@ -487,7 +487,7 @@ export const INITIAL_RESCUE_TEAMS: RescueTeam[] = [
       lastUpdated: "2026-11-16T23:15:00Z",
     },
     teamLead: {
-      name: "Inspector R. K. Debnath",
+      name: "Inspector Bharat Chandra Debnath",
       phone: "+91 94361 00404",
       rank: "Inspector",
     },
@@ -520,7 +520,7 @@ export const INITIAL_RESCUE_TEAMS: RescueTeam[] = [
       lastUpdated: "2026-11-16T23:10:00Z",
     },
     teamLead: {
-      name: "Coordinator Ananya Roy",
+      name: "Coordinator Shatrughan Chandra Roy",
       phone: "+91 94361 00505",
       rank: "Team Coordinator",
     },
@@ -553,7 +553,7 @@ export const INITIAL_RESCUE_TEAMS: RescueTeam[] = [
       lastUpdated: "2026-11-16T23:00:00Z",
     },
     teamLead: {
-      name: "Inspector Sudip Paul",
+      name: "Inspector Hanuman Prasad Paul",
       phone: "+91 94361 00606",
       rank: "Inspector",
     },
@@ -1065,9 +1065,9 @@ export const INITIAL_RESOURCES: ResourceItem[] = [
 export const INITIAL_VOLUNTEERS: Volunteer[] = [
   {
     id: "vol-001",
-    fullName: "Ananya Roy",
+    fullName: "Ram Chandra Roy",
     phone: "+91 94361 88101",
-    email: "ananya.roy@aapdamitra.tripura.org",
+    email: "ram.chandra@aapdamitra.tripura.org",
     district: "West Tripura",
     skills: ["First Aid Certified", "Boat Navigator", "Community Translator (Kokborok & Bengali)"],
     status: "verified",
@@ -1076,9 +1076,9 @@ export const INITIAL_VOLUNTEERS: Volunteer[] = [
   },
   {
     id: "vol-002",
-    fullName: "Kishan Debbarma",
+    fullName: "Laxman Chandra Debbarma",
     phone: "+91 98620 99202",
-    email: "kishan.d@tripura.org",
+    email: "laxman.chandra@tripura.org",
     district: "Khowai",
     skills: ["Heavy Vehicle Driver", "Rope Rescue", "Ham Radio Operator"],
     status: "active_deployed",
@@ -1087,20 +1087,20 @@ export const INITIAL_VOLUNTEERS: Volunteer[] = [
   },
   {
     id: "vol-003",
-    fullName: "Poulomi Bhattacharjee",
+    fullName: "Dasharath Bhattacharjee",
     phone: "+91 97740 33403",
-    email: "poulomi.b@nurse.in",
+    email: "dasharath.b@emergency.in",
     district: "Gomati",
-    skills: ["Nursing Assistant", "Pediatric Triage", "Psychosocial Support"],
+    skills: ["First Responder", "Paramedic Triage", "Emergency Shelter Logistics"],
     status: "verified",
     totalMissions: 18,
     registeredAt: "2025-05-14T00:00:00Z",
   },
   {
     id: "vol-004",
-    fullName: "Dipankar Paul",
+    fullName: "Bharat Chandra Paul",
     phone: "+91 94364 12504",
-    email: "dipankar.paul@civildefence.in",
+    email: "bharat.paul@civildefence.in",
     district: "Unakoti",
     skills: ["Drone Pilot", "GIS Mapping Volunteer", "Swimmer"],
     status: "active_deployed",
@@ -1116,15 +1116,15 @@ export const INITIAL_VOLUNTEERS: Volunteer[] = [
 export const INITIAL_EMERGENCY_CONTACTS: EmergencyContact[] = [
   {
     id: "ec-01",
-    name: "Dr. Partha Debbarma (Family Physician)",
+    name: "Dr. Ram Chandra Debbarma (Family Physician)",
     relation: "Doctor / Family Friend",
     phone: "+91 94361 55901",
     notifyOnSos: true,
   },
   {
     id: "ec-02",
-    name: "Swapna Debbarma (Spouse)",
-    relation: "Spouse",
+    name: "Laxman Chandra Debbarma (Brother)",
+    relation: "Brother / Emergency Responder",
     phone: "+91 98621 44102",
     notifyOnSos: true,
   },
@@ -1144,7 +1144,7 @@ export const INITIAL_EMERGENCY_CONTACTS: EmergencyContact[] = [
 export const INITIAL_JOURNEY_SESSION: JourneySession = {
   id: "jrn-tripura-01",
   userId: "usr-demo-01",
-  userName: "Subrata Debbarma",
+  userName: "Ram Chandra Debbarma",
   startLocation: {
     lat: 23.8290,
     lng: 91.2760,
@@ -1164,8 +1164,8 @@ export const INITIAL_JOURNEY_SESSION: JourneySession = {
   lastCheckinAt: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
   status: "active",
   emergencyContacts: [
-    { name: "Swapna Debbarma", phone: "+91 98621 44102" },
-    { name: "Dr. Partha Debbarma", phone: "+91 94361 55901" },
+    { name: "Laxman Chandra Debbarma", phone: "+91 98621 44102" },
+    { name: "Dr. Ram Chandra Debbarma", phone: "+91 94361 55901" },
   ],
 };
 
@@ -1177,7 +1177,7 @@ export const INITIAL_AUDIT_LOGS: AuditLogEntry[] = [
   {
     id: "aud-001",
     userId: "usr-demo-01",
-    userName: "Pinaki Bhattacharjee (Dispatcher)",
+    userName: "Ram Chandra Bhattacharjee (Dispatcher)",
     userRole: "operator",
     action: "DISPATCH_TEAM",
     entityType: "rescue_team",
@@ -1189,7 +1189,7 @@ export const INITIAL_AUDIT_LOGS: AuditLogEntry[] = [
   {
     id: "aud-002",
     userId: "usr-demo-01",
-    userName: "Pinaki Bhattacharjee (Dispatcher)",
+    userName: "Ram Chandra Bhattacharjee (Dispatcher)",
     userRole: "operator",
     action: "VERIFY_INCIDENT",
     entityType: "incident",
@@ -1201,7 +1201,7 @@ export const INITIAL_AUDIT_LOGS: AuditLogEntry[] = [
   {
     id: "aud-003",
     userId: "usr-demo-02",
-    userName: "Inspector Alok Kumar (NDRF)",
+    userName: "Inspector Laxman Chandra Kumar (NDRF)",
     userRole: "team_member",
     action: "UPDATE_STATUS",
     entityType: "incident",
@@ -1213,7 +1213,7 @@ export const INITIAL_AUDIT_LOGS: AuditLogEntry[] = [
   {
     id: "aud-004",
     userId: "usr-admin-01",
-    userName: "Sudip Paul (District Admin)",
+    userName: "Dasharath Paul (District Admin)",
     userRole: "admin",
     action: "DECLARE_HAZARD_ZONE",
     entityType: "hazard_zone",

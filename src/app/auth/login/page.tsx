@@ -26,7 +26,7 @@ export default function LoginPage() {
   const { loginUser } = usePranrakshaStore();
 
   const [selectedRole, setSelectedRole] = useState<UserProfile["role"]>("citizen");
-  const [email, setEmail] = useState("subrata.debbarma@citizen.tripura.in");
+  const [email, setEmail] = useState("ram.chandra@citizen.tripura.in");
   const [password, setPassword] = useState("••••••••");
   const [loading, setLoading] = useState(false);
   const [successNotice, setSuccessNotice] = useState<string | null>(null);
@@ -43,8 +43,8 @@ export default function LoginPage() {
     {
       role: "citizen",
       title: "Citizen",
-      name: "Subrata Debbarma",
-      email: "subrata.debbarma@citizen.tripura.in",
+      name: "Ram Chandra Debbarma",
+      email: "ram.chandra@citizen.tripura.in",
       org: "Tripura Citizen Protection Portal",
       icon: HeartPulse,
       targetRoute: "/citizen/dashboard",
@@ -52,8 +52,8 @@ export default function LoginPage() {
     {
       role: "volunteer",
       title: "Volunteer",
-      name: "Ananya Roy",
-      email: "ananya.roy@aapdamitra.tripura.org",
+      name: "Laxman Chandra Roy",
+      email: "laxman.chandra@aapdamitra.tripura.org",
       org: "Aapda Mitra Community Disaster Task Force",
       icon: Users,
       targetRoute: "/team/dashboard",
@@ -61,8 +61,8 @@ export default function LoginPage() {
     {
       role: "team_member",
       title: "Rescue Lead",
-      name: "Inspector Alok Kumar",
-      email: "alok.kumar@ndrf.gov.in",
+      name: "Inspector Dasharath Kumar",
+      email: "dasharath.kumar@ndrf.gov.in",
       org: "NDRF 1st Battalion Detachment Agartala",
       icon: Users,
       targetRoute: "/team/dashboard",
@@ -70,8 +70,8 @@ export default function LoginPage() {
     {
       role: "operator",
       title: "Dispatcher",
-      name: "Pinaki Bhattacharjee",
-      email: "pinaki.bhattacharjee@pranraksha.gov.in",
+      name: "Ram Chandra Bhattacharjee",
+      email: "ram.chandra@pranraksha.gov.in",
       org: "State Emergency Operations Centre (SEOC) Agartala",
       icon: Radio,
       targetRoute: "/admin/command-center",
@@ -79,8 +79,8 @@ export default function LoginPage() {
     {
       role: "admin",
       title: "Administrator",
-      name: "Sudip Paul",
-      email: "sudip.paul@tripura.gov.in",
+      name: "Bharat Chandra Paul",
+      email: "bharat.paul@tripura.gov.in",
       org: "District Emergency Operations Centre (DEOC)",
       icon: ShieldCheck,
       targetRoute: "/admin",
