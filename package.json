@@ -11,6 +11,7 @@
   "engines": {
     "node": ">=18.17.0"
   },
+  "packageManager": "npm@10.8.2",
   "dependencies": {
     "@supabase/supabase-js": "^2.46.2",
     "@turf/turf": "^7.1.0",

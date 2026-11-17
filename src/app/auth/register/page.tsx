@@ -97,7 +97,7 @@ export default function RegisterPage() {
 
       <Navbar />
 
-      <main className="flex-1 max-w-2xl w-full mx-auto px-4 py-12 flex flex-col items-center justify-center relative z-10">
+      <main className="flex-1 max-w-2xl w-full mx-auto px-4 py-12 pb-24 lg:pb-12 flex flex-col items-center justify-center relative z-10">
         <div className="w-full space-y-6">
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cobalt/20 text-sky-300 text-xs font-bold uppercase tracking-wider border border-sky-400/30 backdrop-blur-md">

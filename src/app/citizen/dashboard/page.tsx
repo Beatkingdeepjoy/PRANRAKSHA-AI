@@ -128,9 +128,9 @@ export default function CitizenDashboardPage() {
 
   const triggerSosEmergency = () => {
     const newInc = reportIncident({
-      title: "CITIZEN SOS DISTRESS CALL",
-      description: `Instant SOS activated from mobile device. Coordinates: ${currentCoords.lat.toFixed(4)}°N, ${currentCoords.lng.toFixed(4)}°E (Accuracy: ±${Math.round(currentCoords.accuracy || 10)}m). ${silentAlert ? "[Silent SOS mode selected]" : ""}`,
-      category: "general_sos",
+      title: `CITIZEN SOS DISTRESS CALL (${emergencyType.toUpperCase()})`,
+      description: `Instant SOS activated from mobile device. Selected Category: ${emergencyType.toUpperCase()}. Coordinates: ${currentCoords.lat.toFixed(4)}°N, ${currentCoords.lng.toFixed(4)}°E (Accuracy: ±${Math.round(currentCoords.accuracy || 10)}m). ${silentAlert ? "[Silent SOS mode selected]" : ""}`,
+      category: emergencyType,
       severity: "critical",
       location: {
         lat: currentCoords.lat,
@@ -210,19 +210,19 @@ export default function CitizenDashboardPage() {
     <div className="min-h-screen bg-navy text-foreground flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8 pb-28 lg:pb-8">
         {/* Welcome & GPS Telemetry Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-2xl bg-midnight border border-cobalt/30 shadow-xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl glass-liquid-card border border-cobalt/30 shadow-xl">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-xs font-semibold text-sky-400 uppercase tracking-wider">
               <HeartPulse className="h-4 w-4" />
               <span>Citizen Emergency Protection Portal</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white">
+            <h1 className="text-xl sm:text-3xl font-black text-white">
               Welcome, {currentUser.fullName}
             </h1>
             <p className="text-xs text-slate-400">
-              Your device is monitored by the State Emergency Operations Centre (SEOC).
+              Your device is monitored by the State Emergency Operations Centre (SEOC Agartala).
             </p>
           </div>
 
@@ -235,7 +235,7 @@ export default function CitizenDashboardPage() {
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5 font-bold text-white">
                   <span className={`h-2 w-2 rounded-full ${gpsLoading ? "bg-amber-400 animate-pulse" : "bg-emerald-400 animate-ping"}`} />
-                  <span>{gpsLoading ? "Detecting GPS..." : "GPS Location Acquired"}</span>
+                  <span>{gpsLoading ? "Acquiring GPS..." : "GPS Location Active"}</span>
                 </div>
                 <button
                   type="button"
@@ -255,7 +255,7 @@ export default function CitizenDashboardPage() {
         {/* SOS Emergency Hub (Flagship Section) */}
         <section id="sos" className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Large Emergency SOS Hold Button */}
-          <div className="lg:col-span-2 p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-critical/20 via-midnight to-midnight border-2 border-critical/40 shadow-2xl space-y-6 text-center flex flex-col items-center justify-center relative overflow-hidden">
+          <div className="lg:col-span-2 p-5 sm:p-8 rounded-3xl bg-gradient-to-b from-critical/20 via-midnight to-midnight border-2 border-critical/40 shadow-2xl space-y-5 sm:space-y-6 text-center flex flex-col items-center justify-center relative overflow-hidden">
             {/* Background Pulsing Radians */}
             <div className="absolute inset-0 bg-red-600/5 animate-pulse pointer-events-none" />
 
@@ -272,15 +272,39 @@ export default function CitizenDashboardPage() {
               </p>
             </div>
 
+            {/* Quick One-Tap Emergency Category Selector */}
+            <div className="w-full max-w-md flex items-center justify-between gap-1.5 p-1.5 rounded-2xl bg-navy/80 border border-cobalt/30 shadow-inner">
+              {[
+                { id: "flood", label: "Flood Water", icon: "🌊" },
+                { id: "landslide", label: "Landslide", icon: "🏔️" },
+                { id: "medical", label: "Critical Med", icon: "🏥" },
+                { id: "fire", label: "Fire / Spark", icon: "🔥" },
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setEmergencyType(cat.id as EmergencyCategory)}
+                  className={`flex-1 py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all flex flex-col sm:flex-row items-center justify-center gap-1 ${
+                    emergencyType === cat.id
+                      ? "bg-cobalt text-white shadow-lg border border-sky-300 scale-105"
+                      : "text-slate-300 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  <span className="text-sm">{cat.icon}</span>
+                  <span className="truncate">{cat.label}</span>
+                </button>
+              ))}
+            </div>
+
             {/* Interactive Hold Button */}
-            <div className="relative my-4 select-none">
+            <div className="relative my-2 sm:my-4 select-none touch-none">
               <button
                 onMouseDown={startHold}
                 onMouseUp={endHold}
                 onMouseLeave={endHold}
                 onTouchStart={startHold}
                 onTouchEnd={endHold}
-                className="relative flex flex-col items-center justify-center h-48 w-48 sm:h-56 sm:w-56 rounded-full bg-gradient-to-br from-red-600 to-critical text-white font-black shadow-2xl shadow-critical/60 border-4 border-red-300/40 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="relative flex flex-col items-center justify-center h-44 w-44 sm:h-56 sm:w-56 rounded-full bg-gradient-to-br from-red-600 to-critical text-white font-black shadow-2xl shadow-critical/60 border-4 border-red-300/40 hover:scale-105 active:scale-95 transition-all cursor-pointer touch-none select-none"
               >
                 {/* SVG Progress Ring */}
                 <svg className="absolute inset-0 h-full w-full -rotate-90 pointer-events-none">
@@ -302,9 +326,9 @@ export default function CitizenDashboardPage() {
                   />
                 </svg>
 
-                <ShieldAlert className="h-12 w-12 sm:h-16 sm:w-16 mb-1 text-white animate-pulse" />
+                <ShieldAlert className="h-10 w-10 sm:h-16 sm:w-16 mb-1 text-white animate-pulse" />
                 <span className="text-2xl sm:text-3xl font-black tracking-wider">SOS</span>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-red-200 mt-1">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-red-200 mt-0.5 sm:mt-1">
                   {isHoldingSos ? `HOLDING ${Math.round(sosProgress)}%` : "HOLD 2 SECONDS"}
                 </span>
               </button>

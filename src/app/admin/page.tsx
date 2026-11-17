@@ -49,11 +49,11 @@ export default function AdminOverviewPage() {
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-wider">
             <Radio className="h-4 w-4 animate-pulse text-emerald-400" />
-            <span>State Operations Command Overview • Assam State Disaster Management</span>
+            <span>State Operations Command Overview • Tripura State Disaster Management</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black text-white">Emergency Overview Dashboard</h1>
           <p className="text-xs text-slate-300">
-            Real-time multi-agency coordination feed for NDRF, SDRF, ASDMA, and District Crisis Centres.
+            Real-time multi-agency coordination feed for NDRF, TSR, TDMA, and District Crisis Centres.
           </p>
         </div>
 

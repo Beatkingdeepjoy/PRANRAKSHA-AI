@@ -131,7 +131,7 @@ export default function LoginPage() {
 
       <Navbar />
 
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-12 flex flex-col items-center justify-center relative z-10">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-12 pb-24 lg:pb-12 flex flex-col items-center justify-center relative z-10">
         <div className="w-full max-w-md space-y-6">
           {/* Header Branding */}
           <div className="text-center space-y-2">

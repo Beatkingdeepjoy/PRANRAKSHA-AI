@@ -87,7 +87,7 @@ export default function RoutesPage() {
     <div className="min-h-screen bg-navy text-foreground flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8 space-y-6">
         <div className="space-y-1 border-b border-cobalt/20 pb-4">
           <div className="flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-wider">
             <Route className="h-4 w-4" />
