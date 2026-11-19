@@ -42,9 +42,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-navy text-foreground flex flex-col relative overflow-hidden">
-      {/* Background Liquid Ambient Light Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-cobalt/20 via-electric/15 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-3/4 right-0 w-[500px] h-[400px] bg-gradient-to-br from-sky-400/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
+      {/* Background Liquid Ambient Light Orbs with Organic Morphing */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] bg-gradient-to-tr from-cobalt/25 via-electric/20 to-sky-400/10 rounded-full blur-[140px] pointer-events-none animate-liquid-morph" />
+      <div className="absolute top-3/4 right-0 w-[550px] h-[450px] bg-gradient-to-br from-purple-600/15 via-sky-400/15 to-transparent rounded-full blur-[130px] pointer-events-none animate-liquid-morph-fast" />
 
       <Navbar />
 
@@ -52,13 +52,15 @@ export default function HomePage() {
       <section className="relative overflow-hidden pt-14 pb-20 border-b border-cobalt/20 tactical-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            {/* Top Operational Pill with Liquid Glass */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-liquid text-sky-200 text-xs font-semibold tracking-wide shadow-xl shadow-cobalt/20 animate-float">
-              <span className="relative flex h-2 w-2">
+            {/* Top Operational Pill styled like an Apple Dynamic Island */}
+            <div className="dynamic-island inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 text-sky-200 text-xs font-semibold tracking-wide shadow-2xl animate-float cursor-default">
+              <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-critical opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-critical"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-critical"></span>
               </span>
-              <span>TRIPURA STATE DISASTER NETWORK • LIVE SEOC AGARTALA MONITORING</span>
+              <span className="tracking-wider uppercase font-mono text-[11px] text-sky-200">
+                TRIPURA STATE DISASTER NETWORK • LIVE SEOC AGARTALA RADAR
+              </span>
             </div>
 
             {/* Main Headline */}
@@ -74,11 +76,11 @@ export default function HomePage() {
               An intelligent emergency response network connecting citizens across Tripura with AI hazard prediction, GIS flood mapping, and rapid rescue team coordination.
             </p>
 
-            {/* Action Buttons */}
+            {/* Action Buttons (iOS Spring Tap Physics) */}
             <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
               <Link
                 href="/citizen/dashboard#sos"
-                className="btn-shimmer-sweep flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-critical hover:from-red-600 hover:to-red-500 text-white font-extrabold text-sm uppercase tracking-wider shadow-2xl shadow-critical/40 border border-red-400/40 transition-all hover:scale-105 active:scale-95"
+                className="ios-spring btn-shimmer-sweep flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-gradient-to-r from-red-600 via-critical to-red-700 hover:from-red-600 hover:to-red-500 text-white font-extrabold text-sm uppercase tracking-wider shadow-2xl shadow-critical/40 border border-red-400/40"
               >
                 <ShieldAlert className="h-5 w-5" />
                 <span>Report Emergency SOS</span>
@@ -86,7 +88,7 @@ export default function HomePage() {
 
               <Link
                 href="/admin/command-center"
-                className="btn-shimmer-sweep flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cobalt via-electric to-sky-500 hover:from-cobalt hover:to-sky-400 text-white font-bold text-sm tracking-wide shadow-xl shadow-cobalt/30 border border-sky-400/40 transition-all hover:scale-105 active:scale-95"
+                className="ios-spring btn-shimmer-sweep flex items-center gap-2.5 px-7 py-4 rounded-2xl bg-gradient-to-r from-cobalt via-electric to-sky-500 hover:from-cobalt hover:to-sky-400 text-white font-bold text-sm tracking-wide shadow-xl shadow-cobalt/30 border border-sky-400/40"
               >
                 <Radio className="h-5 w-5" />
                 <span>Explore Command Centre</span>
@@ -95,41 +97,41 @@ export default function HomePage() {
 
               <Link
                 href="/auth/register"
-                className="flex items-center gap-2 px-5 py-3.5 rounded-2xl glass-liquid hover:bg-white/10 text-sky-200 border border-cobalt/40 text-sm font-semibold transition-all hover:scale-105"
+                className="ios-spring flex items-center gap-2.5 px-6 py-4 rounded-2xl dynamic-island hover:bg-white/10 text-sky-200 text-sm font-semibold"
               >
                 <UserPlus className="h-4 w-4 text-sky-400" />
                 <span>Sign Up / Volunteer</span>
               </Link>
             </div>
 
-            {/* Live Metrics Quick Strip (Liquid Glass Cards) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 max-w-4xl mx-auto text-left">
-              <div className="p-4 rounded-3xl glass-liquid-card border border-cobalt/30 card-tactical-interactive relative overflow-hidden group">
+            {/* Live Metrics Quick Strip (iPhone Liquid Glass Widgets) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-8 max-w-4xl mx-auto text-left">
+              <div className="liquid-card ios-spring p-5 rounded-[2rem] border border-white/10 relative overflow-hidden group">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Active Emergencies</div>
-                <div className="text-2xl font-black text-white mt-1">{activeIncidents.length}</div>
-                <div className="text-[10px] text-amber-400 font-medium">Tripura Basin Alert</div>
+                <div className="text-3xl font-black text-white mt-1.5 font-mono">{activeIncidents.length}</div>
+                <div className="text-[10px] text-amber-400 font-medium mt-1">Tripura Basin Alert</div>
               </div>
 
-              <div className="p-4 rounded-3xl glass-liquid-card border border-critical/30 card-tactical-interactive relative overflow-hidden group">
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-critical to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+              <div className="liquid-card ios-spring p-5 rounded-[2rem] border border-critical/30 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-critical to-transparent opacity-70 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Critical Priority</div>
-                <div className="text-2xl font-black text-critical mt-1">{criticalCount}</div>
-                <div className="text-[10px] text-red-300 font-medium">NDRF / TSR Active</div>
+                <div className="text-3xl font-black text-critical mt-1.5 font-mono">{criticalCount}</div>
+                <div className="text-[10px] text-red-300 font-medium mt-1">NDRF / TSR Active</div>
               </div>
 
-              <div className="p-4 rounded-3xl glass-liquid-card border border-cobalt/30 card-tactical-interactive relative overflow-hidden group">
+              <div className="liquid-card ios-spring p-5 rounded-[2rem] border border-white/10 relative overflow-hidden group">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">People Affected</div>
-                <div className="text-2xl font-black text-sky-300 mt-1">{totalAffected}</div>
-                <div className="text-[10px] text-slate-400 font-medium">Shelter Assisted</div>
+                <div className="text-3xl font-black text-sky-300 mt-1.5 font-mono">{totalAffected}</div>
+                <div className="text-[10px] text-slate-400 font-medium mt-1">Shelter Assisted</div>
               </div>
 
-              <div className="p-4 rounded-3xl glass-liquid-card border border-emerald-500/30 card-tactical-interactive relative overflow-hidden group">
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+              <div className="liquid-card ios-spring p-5 rounded-[2rem] border border-emerald-500/30 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Rescue Units Ready</div>
-                <div className="text-2xl font-black text-emerald-400 mt-1">{rescueTeams.length}</div>
-                <div className="text-[10px] text-emerald-300 font-medium">NDRF / TSR / Fire Units</div>
+                <div className="text-3xl font-black text-emerald-400 mt-1.5 font-mono">{rescueTeams.length}</div>
+                <div className="text-[10px] text-emerald-300 font-medium mt-1">NDRF / TSR / Fire Units</div>
               </div>
             </div>
           </div>

@@ -256,3 +256,129 @@ body {
 .animate-beacon-halo {
   animation: beacon-expand 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 }
+
+/* ==============================================================================
+   IPHONE LIQUID UI & APPLE SPRING STYLING
+   ============================================================================== */
+
+/* Apple Spring Tap Physics */
+.ios-spring {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.2s ease;
+  will-change: transform;
+}
+.ios-spring:active {
+  transform: scale(0.95) !important;
+}
+
+/* Apple Dynamic Island Floating Glass Pill */
+.dynamic-island {
+  background: rgba(4, 10, 24, 0.88);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 12px 30px -8px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(37, 99, 235, 0.15),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.dynamic-island:hover {
+  border-color: rgba(96, 165, 250, 0.45);
+  box-shadow: 
+    0 16px 36px -8px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(37, 99, 235, 0.25),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
+}
+
+/* Liquid Glass Squircle Card */
+.liquid-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(37, 99, 235, 0.05) 45%,
+    rgba(11, 23, 54, 0.8) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1.75rem;
+  box-shadow: 
+    0 16px 36px -12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 1px 0 rgba(37, 99, 235, 0.15);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.liquid-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(96, 165, 250, 0.45);
+  box-shadow: 
+    0 24px 45px -12px rgba(37, 99, 235, 0.3),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* iOS Segmented Pill Controls */
+.ios-segmented {
+  background: rgba(7, 17, 38, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  padding: 4px;
+}
+.ios-segmented-active {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 
+    0 6px 18px rgba(37, 99, 235, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* Fluid Organic Liquid Morphing Animation */
+@keyframes liquid-morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 40% 60% 70% 30% / 40% 60% 30% 70%;
+    transform: rotate(120deg) scale(1.05);
+  }
+  66% {
+    border-radius: 30% 60% 40% 70% / 50% 30% 70% 50%;
+    transform: rotate(240deg) scale(0.96);
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(360deg) scale(1);
+  }
+}
+.animate-liquid-morph {
+  animation: liquid-morph 18s ease-in-out infinite;
+}
+.animate-liquid-morph-fast {
+  animation: liquid-morph 8s ease-in-out infinite;
+}
+
+/* iOS Glass Widget Squircle */
+.ios-widget {
+  background: rgba(11, 23, 54, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.5rem;
+  box-shadow: 
+    0 10px 25px -8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.ios-widget:hover {
+  transform: translateY(-2px);
+  border-color: rgba(96, 165, 250, 0.35);
+  box-shadow: 
+    0 15px 30px -8px rgba(37, 99, 235, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.28);
+}
+.ios-widget:active {
+  transform: scale(0.97);
+}

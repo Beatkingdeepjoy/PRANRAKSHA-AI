@@ -214,8 +214,9 @@ export default function CitizenDashboardPage() {
       <Navbar />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Welcome & GPS Telemetry Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-2xl bg-midnight border border-cobalt/30 shadow-xl">
+        {/* Welcome & GPS Telemetry Header (Liquid Glass Widget) */}
+        <div className="liquid-card p-6 rounded-[2.25rem] flex flex-col md:flex-row md:items-center justify-between gap-5 relative overflow-hidden group">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-50" />
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-xs font-semibold text-sky-400 uppercase tracking-wider">
               <HeartPulse className="h-4 w-4" />
@@ -229,23 +230,23 @@ export default function CitizenDashboardPage() {
             </p>
           </div>
 
-          {/* GPS Status Card */}
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-navy/90 border border-cobalt/20 text-xs">
-            <div className="h-9 w-9 rounded-lg bg-cobalt/20 border border-cobalt/40 flex items-center justify-center text-sky-300 shrink-0">
-              <Navigation className={`h-5 w-5 ${gpsLoading ? "animate-spin text-sky-400" : "animate-pulse"}`} />
+          {/* GPS Status Card (Apple Dynamic Island Pill) */}
+          <div className="dynamic-island flex items-center gap-3.5 p-3.5 pr-4 text-xs">
+            <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-cobalt to-sky-400 flex items-center justify-center text-white shrink-0 shadow-md">
+              <Navigation className={`h-5 w-5 ${gpsLoading ? "animate-spin text-white" : "animate-pulse"}`} />
             </div>
             <div>
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-1.5 font-bold text-white">
                   <span className={`h-2 w-2 rounded-full ${gpsLoading ? "bg-amber-400 animate-pulse" : "bg-emerald-400 animate-ping"}`} />
-                  <span>{gpsLoading ? "Detecting GPS..." : "GPS Location Acquired"}</span>
+                  <span>{gpsLoading ? "Acquiring GPS..." : "GPS Location Active"}</span>
                 </div>
                 <button
                   type="button"
                   onClick={refreshGpsLocation}
-                  className="text-[10px] text-sky-400 hover:text-white font-bold underline cursor-pointer"
+                  className="ios-spring text-[10px] text-sky-400 hover:text-white font-bold underline cursor-pointer"
                 >
-                  Refresh GPS
+                  Refresh
                 </button>
               </div>
               <div className="text-[11px] font-mono text-slate-300">
@@ -258,12 +259,12 @@ export default function CitizenDashboardPage() {
         {/* SOS Emergency Hub (Flagship Section) */}
         <section id="sos" className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Large Emergency SOS Hold Button */}
-          <div className="lg:col-span-2 p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-critical/20 via-midnight to-midnight border-2 border-critical/40 shadow-2xl space-y-6 text-center flex flex-col items-center justify-center relative overflow-hidden">
+          <div className="lg:col-span-2 p-6 sm:p-10 rounded-[2.5rem] liquid-card border-2 border-critical/40 shadow-2xl space-y-6 text-center flex flex-col items-center justify-center relative overflow-hidden">
             {/* Background Pulsing Radians */}
             <div className="absolute inset-0 bg-red-600/5 animate-pulse pointer-events-none" />
 
             <div className="space-y-2 max-w-md">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-critical/20 text-red-300 text-xs font-bold uppercase tracking-wider border border-critical/30">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-critical/20 text-red-300 text-xs font-bold uppercase tracking-wider border border-critical/30">
                 <ShieldAlert className="h-4 w-4 text-critical" />
                 <span>Immediate Threat to Life</span>
               </div>
@@ -275,8 +276,8 @@ export default function CitizenDashboardPage() {
               </p>
             </div>
 
-            {/* Quick Emergency Category Selector (Professional SVG Icons, No Emojis) */}
-            <div className="w-full max-w-md grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {/* Quick Emergency Category Selector (iOS Liquid Segmented Control) */}
+            <div className="ios-segmented grid grid-cols-2 sm:grid-cols-4 gap-1.5 w-full max-w-lg shadow-xl">
               {[
                 { id: "flood", label: "Flood Water", icon: Waves },
                 { id: "landslide", label: "Landslide", icon: Mountain },
@@ -290,14 +291,14 @@ export default function CitizenDashboardPage() {
                     key={cat.id}
                     type="button"
                     onClick={() => setEmergencyType(cat.id as EmergencyCategory)}
-                    className={`py-2 px-2 rounded-xl text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 border ${
+                    className={`ios-spring py-3 px-2 rounded-2xl text-xs font-bold transition-all flex flex-col items-center justify-center gap-1.5 ${
                       isSelected
-                        ? "bg-cobalt text-white border-sky-400 shadow-md ring-1 ring-sky-300 scale-[1.02]"
-                        : "bg-navy/80 hover:bg-navy border-cobalt/20 text-slate-300 hover:text-white"
+                        ? "ios-segmented-active scale-[1.02]"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
                     }`}
                   >
-                    <IconComp className={`h-4 w-4 ${isSelected ? "text-sky-300" : "text-slate-400"}`} />
-                    <span className="text-[11px] truncate">{cat.label}</span>
+                    <IconComp className={`h-4 w-4 ${isSelected ? "text-white" : "text-slate-400"}`} />
+                    <span className="text-[11px] truncate tracking-wide">{cat.label}</span>
                   </button>
                 );
               })}
