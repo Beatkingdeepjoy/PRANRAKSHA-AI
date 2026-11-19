@@ -49,11 +49,11 @@ export default function HomePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-14 pb-20 border-b border-cobalt/20">
+      <section className="relative overflow-hidden pt-14 pb-20 border-b border-cobalt/20 tactical-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             {/* Top Operational Pill with Liquid Glass */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-liquid text-sky-200 text-xs font-semibold tracking-wide shadow-xl shadow-cobalt/20">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-liquid text-sky-200 text-xs font-semibold tracking-wide shadow-xl shadow-cobalt/20 animate-float">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-critical opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-critical"></span>
@@ -78,7 +78,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
               <Link
                 href="/citizen/dashboard#sos"
-                className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-critical hover:from-red-600 hover:to-red-500 text-white font-extrabold text-sm uppercase tracking-wider shadow-2xl shadow-critical/40 border border-red-400/40 transition-all hover:scale-105 active:scale-95"
+                className="btn-shimmer-sweep flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-critical hover:from-red-600 hover:to-red-500 text-white font-extrabold text-sm uppercase tracking-wider shadow-2xl shadow-critical/40 border border-red-400/40 transition-all hover:scale-105 active:scale-95"
               >
                 <ShieldAlert className="h-5 w-5" />
                 <span>Report Emergency SOS</span>
@@ -86,7 +86,7 @@ export default function HomePage() {
 
               <Link
                 href="/admin/command-center"
-                className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cobalt via-electric to-sky-500 hover:from-cobalt hover:to-sky-400 text-white font-bold text-sm tracking-wide shadow-xl shadow-cobalt/30 border border-sky-400/40 transition-all hover:scale-105 active:scale-95"
+                className="btn-shimmer-sweep flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cobalt via-electric to-sky-500 hover:from-cobalt hover:to-sky-400 text-white font-bold text-sm tracking-wide shadow-xl shadow-cobalt/30 border border-sky-400/40 transition-all hover:scale-105 active:scale-95"
               >
                 <Radio className="h-5 w-5" />
                 <span>Explore Command Centre</span>
@@ -104,25 +104,29 @@ export default function HomePage() {
 
             {/* Live Metrics Quick Strip (Liquid Glass Cards) */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 max-w-4xl mx-auto text-left">
-              <div className="p-4 rounded-3xl glass-liquid-card border border-cobalt/30">
+              <div className="p-4 rounded-3xl glass-liquid-card border border-cobalt/30 card-tactical-interactive relative overflow-hidden group">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Active Emergencies</div>
                 <div className="text-2xl font-black text-white mt-1">{activeIncidents.length}</div>
                 <div className="text-[10px] text-amber-400 font-medium">Tripura Basin Alert</div>
               </div>
 
-              <div className="p-4 rounded-3xl glass-liquid-card border border-critical/30">
+              <div className="p-4 rounded-3xl glass-liquid-card border border-critical/30 card-tactical-interactive relative overflow-hidden group">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-critical to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Critical Priority</div>
                 <div className="text-2xl font-black text-critical mt-1">{criticalCount}</div>
                 <div className="text-[10px] text-red-300 font-medium">NDRF / TSR Active</div>
               </div>
 
-              <div className="p-4 rounded-3xl glass-liquid-card border border-cobalt/30">
+              <div className="p-4 rounded-3xl glass-liquid-card border border-cobalt/30 card-tactical-interactive relative overflow-hidden group">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">People Affected</div>
                 <div className="text-2xl font-black text-sky-300 mt-1">{totalAffected}</div>
                 <div className="text-[10px] text-slate-400 font-medium">Shelter Assisted</div>
               </div>
 
-              <div className="p-4 rounded-3xl glass-liquid-card border border-emerald-500/30">
+              <div className="p-4 rounded-3xl glass-liquid-card border border-emerald-500/30 card-tactical-interactive relative overflow-hidden group">
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
                 <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Rescue Units Ready</div>
                 <div className="text-2xl font-black text-emerald-400 mt-1">{rescueTeams.length}</div>
                 <div className="text-[10px] text-emerald-300 font-medium">NDRF / TSR / Fire Units</div>
@@ -251,8 +255,9 @@ export default function HomePage() {
             ].map((st) => (
               <div
                 key={st.step}
-                className="p-5 rounded-3xl glass-liquid-card hover:border-sky-400/50 transition-all group"
+                className="p-5 rounded-3xl glass-liquid-card card-tactical-interactive border border-cobalt/25 relative overflow-hidden group"
               >
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-2xl font-black font-mono text-slate-500 group-hover:text-sky-400 transition-colors">
                     {st.step}

@@ -263,7 +263,7 @@ export default function Navbar() {
 
             <Link
               href="/citizen/dashboard#sos"
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-critical hover:from-red-600 hover:to-red-500 text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-critical/40 border border-red-400/40 transition-all hover:scale-105 active:scale-95"
+              className="btn-shimmer-sweep flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-critical hover:from-red-600 hover:to-red-500 text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-critical/40 border border-red-400/40 transition-all hover:scale-105 active:scale-95"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>

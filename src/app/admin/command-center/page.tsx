@@ -326,8 +326,8 @@ export default function CommandCenterPage() {
                   }}
                   className={`w-full text-left p-3 rounded-xl border transition-all ${
                     isSelected
-                      ? "bg-cobalt/20 border-cobalt ring-1 ring-sky-400 shadow-md"
-                      : "bg-navy/70 hover:bg-navy border-cobalt/15"
+                      ? "bg-cobalt/25 border-sky-400 ring-2 ring-sky-400/60 shadow-lg shadow-cobalt/30 scale-[1.01]"
+                      : "bg-navy/70 hover:bg-navy/90 hover:border-cobalt/40 border-cobalt/15"
                   }`}
                 >
                   <div className="flex items-center justify-between">

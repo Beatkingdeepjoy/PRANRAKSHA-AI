@@ -303,15 +303,23 @@ export default function CitizenDashboardPage() {
               })}
             </div>
 
-            {/* Interactive Hold Button */}
-            <div className="relative my-4 select-none touch-none">
+            {/* Interactive Hold Button with Multi-Ring Radar Beacon */}
+            <div className="relative my-6 select-none touch-none flex items-center justify-center">
+              {/* Outer Pulsing Beacon Rings */}
+              <div className="absolute h-56 w-56 sm:h-72 sm:w-72 rounded-full border border-critical/30 bg-critical/5 animate-beacon-ping pointer-events-none" />
+              <div className="absolute h-64 w-64 sm:h-80 sm:w-80 rounded-full border border-critical/20 animate-beacon-halo pointer-events-none" />
+
               <button
                 onMouseDown={startHold}
                 onMouseUp={endHold}
                 onMouseLeave={endHold}
                 onTouchStart={startHold}
                 onTouchEnd={endHold}
-                className="relative flex flex-col items-center justify-center h-48 w-48 sm:h-56 sm:w-56 rounded-full bg-gradient-to-br from-red-600 to-critical text-white font-black shadow-2xl shadow-critical/60 border-4 border-red-300/40 hover:scale-105 active:scale-95 transition-all cursor-pointer touch-none select-none"
+                className={`relative z-10 flex flex-col items-center justify-center h-48 w-48 sm:h-56 sm:w-56 rounded-full bg-gradient-to-br from-red-600 via-critical to-red-700 text-white font-black shadow-2xl transition-all cursor-pointer touch-none select-none ${
+                  isHoldingSos
+                    ? "scale-105 shadow-[0_0_50px_rgba(220,38,38,0.85)] border-4 border-white"
+                    : "border-4 border-red-300/40 hover:scale-105 active:scale-95 shadow-critical/60"
+                }`}
               >
                 {/* SVG Progress Ring */}
                 <svg className="absolute inset-0 h-full w-full -rotate-90 pointer-events-none">

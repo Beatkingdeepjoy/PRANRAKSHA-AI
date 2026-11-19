@@ -195,3 +195,64 @@ body {
 .glow-emerald {
   box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.45);
 }
+
+/* Tactical Background Grid Pattern */
+.tactical-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+}
+
+/* Light Sweep Button Shimmer */
+.btn-shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 3.5s infinite;
+  pointer-events: none;
+}
+
+/* Interactive Card Hover Lift & Glow */
+.card-tactical-interactive {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow, border-color;
+}
+.card-tactical-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 12px 30px -5px rgba(37, 99, 235, 0.25);
+}
+
+/* Pulsing Radar Beacon Ring */
+@keyframes beacon-expand {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+.animate-beacon-halo {
+  animation: beacon-expand 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}

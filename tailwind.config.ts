@@ -83,11 +83,31 @@ const config: Config = {
             opacity: "0",
           },
         },
+        shimmer: {
+          "0%": { transform: "translateX(-150%)" },
+          "100%": { transform: "translateX(250%)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.35", transform: "scale(1)" },
+          "50%": { opacity: "0.75", transform: "scale(1.08)" },
+        },
+        scanline: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(1200%)" },
+        },
       },
       animation: {
         "pulse-subtle": "pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "radar-sweep": "radar-sweep 4s linear infinite",
         "beacon-ping": "beacon-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite",
+        shimmer: "shimmer 3s ease-in-out infinite",
+        float: "float 4s ease-in-out infinite",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        scanline: "scanline 8s linear infinite",
       },
     },
   },
