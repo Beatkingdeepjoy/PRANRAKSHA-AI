@@ -382,18 +382,19 @@ export default function CitizenDashboardPage() {
           {/* Emergency Helpline Direct Contacts & Journey Guardian Banner */}
           <div className="space-y-4">
             {/* Journey Guardian Shortcut */}
-            <div className="p-5 rounded-2xl bg-midnight border border-cobalt/30 space-y-3">
+            <div className="p-6 rounded-[2rem] liquid-card space-y-3 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
               <div className="flex items-center gap-2 text-sky-400 text-xs font-bold uppercase tracking-wider">
                 <Route className="h-4 w-4" />
                 <span>Journey Guardian Mode</span>
               </div>
               <h3 className="text-base font-bold text-white">Traveling Through Flood Zones?</h3>
-              <p className="text-xs text-slate-300">
-                Start a monitored journey session. If you miss a periodic safe check-in, an automatic escalation alert is sent to your emergency contacts.
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Start a monitored journey session. If you miss a periodic safe check-in, an automatic escalation alert is sent to your emergency contacts and SEOC dispatch.
               </p>
               <Link
                 href="/citizen/journey"
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-cobalt hover:bg-cobalt/90 text-white font-bold text-xs uppercase tracking-wider transition-all"
+                className="ios-spring flex items-center justify-center gap-2 w-full py-3 rounded-2xl bg-gradient-to-r from-cobalt via-electric to-sky-500 hover:opacity-95 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-cobalt/30 transition-all border border-sky-400/40"
               >
                 <span>Launch Journey Guardian</span>
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -401,19 +402,19 @@ export default function CitizenDashboardPage() {
             </div>
 
             {/* Emergency Contacts List */}
-            <div className="p-5 rounded-2xl bg-midnight border border-cobalt/30 space-y-3">
+            <div className="p-6 rounded-[2rem] liquid-card space-y-3 relative overflow-hidden">
               <div className="flex items-center justify-between">
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider">
                   Emergency Contacts ({emergencyContacts.length})
                 </h4>
-                <span className="text-[10px] text-emerald-400 font-bold">Auto-Notified on SOS</span>
+                <span className="text-[10px] text-emerald-400 font-bold font-mono">AUTO-NOTIFIED</span>
               </div>
 
               <div className="space-y-2">
                 {emergencyContacts.map((cnt) => (
                   <div
                     key={cnt.id}
-                    className="flex items-center justify-between p-2.5 rounded-lg bg-navy/80 border border-cobalt/20 text-xs"
+                    className="flex items-center justify-between p-3 rounded-2xl bg-navy/80 border border-white/10 text-xs"
                   >
                     <div>
                       <div className="font-bold text-white">{cnt.name}</div>
@@ -421,7 +422,7 @@ export default function CitizenDashboardPage() {
                     </div>
                     <a
                       href={`tel:${cnt.phone}`}
-                      className="flex items-center gap-1 px-2.5 py-1 rounded bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600/30 border border-emerald-500/30 font-mono font-bold"
+                      className="ios-spring flex items-center gap-1 px-3 py-1.5 rounded-xl bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600/30 border border-emerald-500/30 font-mono font-bold"
                     >
                       <PhoneCall className="h-3 w-3" />
                       <span>{cnt.phone}</span>
