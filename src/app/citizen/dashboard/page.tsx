@@ -23,6 +23,9 @@ import {
   VolumeX,
   Volume2,
   Lock,
+  Waves,
+  Mountain,
+  Flame,
 } from "lucide-react";
 import { calculateDistanceKm, getSeverityBadgeClass, getStatusBadgeClass } from "@/lib/utils";
 import { EmergencyCategory, IncidentSeverity } from "@/types";
@@ -272,15 +275,43 @@ export default function CitizenDashboardPage() {
               </p>
             </div>
 
+            {/* Quick Emergency Category Selector (Professional SVG Icons, No Emojis) */}
+            <div className="w-full max-w-md grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {[
+                { id: "flood", label: "Flood Water", icon: Waves },
+                { id: "landslide", label: "Landslide", icon: Mountain },
+                { id: "medical", label: "Critical Med", icon: HeartPulse },
+                { id: "fire", label: "Fire / Gas", icon: Flame },
+              ].map((cat) => {
+                const IconComp = cat.icon;
+                const isSelected = emergencyType === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => setEmergencyType(cat.id as EmergencyCategory)}
+                    className={`py-2 px-2 rounded-xl text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 border ${
+                      isSelected
+                        ? "bg-cobalt text-white border-sky-400 shadow-md ring-1 ring-sky-300 scale-[1.02]"
+                        : "bg-navy/80 hover:bg-navy border-cobalt/20 text-slate-300 hover:text-white"
+                    }`}
+                  >
+                    <IconComp className={`h-4 w-4 ${isSelected ? "text-sky-300" : "text-slate-400"}`} />
+                    <span className="text-[11px] truncate">{cat.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
             {/* Interactive Hold Button */}
-            <div className="relative my-4 select-none">
+            <div className="relative my-4 select-none touch-none">
               <button
                 onMouseDown={startHold}
                 onMouseUp={endHold}
                 onMouseLeave={endHold}
                 onTouchStart={startHold}
                 onTouchEnd={endHold}
-                className="relative flex flex-col items-center justify-center h-48 w-48 sm:h-56 sm:w-56 rounded-full bg-gradient-to-br from-red-600 to-critical text-white font-black shadow-2xl shadow-critical/60 border-4 border-red-300/40 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="relative flex flex-col items-center justify-center h-48 w-48 sm:h-56 sm:w-56 rounded-full bg-gradient-to-br from-red-600 to-critical text-white font-black shadow-2xl shadow-critical/60 border-4 border-red-300/40 hover:scale-105 active:scale-95 transition-all cursor-pointer touch-none select-none"
               >
                 {/* SVG Progress Ring */}
                 <svg className="absolute inset-0 h-full w-full -rotate-90 pointer-events-none">

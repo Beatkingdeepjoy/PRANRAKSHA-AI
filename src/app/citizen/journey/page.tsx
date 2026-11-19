@@ -20,7 +20,7 @@ import {
 export default function JourneyGuardianPage() {
   const { emergencyContacts, activeJourney, currentUser, logAction } = usePranrakshaStore();
 
-  const [destination, setDestination] = useState("Amingaon Relief Hub, North Guwahati");
+  const [destination, setDestination] = useState("Dasarath Deb Memorial Relief Hub, Banamalipur, Agartala");
   const [etaMinutes, setEtaMinutes] = useState(45);
   const [checkinInterval, setCheckinInterval] = useState(15);
   const [isJourneyActive, setIsJourneyActive] = useState(true);

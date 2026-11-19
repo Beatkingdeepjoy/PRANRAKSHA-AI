@@ -23,6 +23,7 @@ import {
   Shield,
   Activity,
   Sparkles,
+  Lock,
 } from "lucide-react";
 import { usePranrakshaStore } from "@/lib/store";
 import { UserProfile } from "@/types";
@@ -97,14 +98,31 @@ export default function Navbar() {
     },
   ];
 
+  const isAdmin =
+    currentUser.isVerified &&
+    (currentUser.role === "operator" ||
+      currentUser.role === "admin" ||
+      currentUser.role === "super_admin");
+
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/map", label: "Live GIS Map", icon: MapPin },
     { href: "/routes", label: "Road Detours", icon: Route },
     { href: "/citizen/dashboard", label: "Citizen SOS", icon: HeartPulse },
     { href: "/team/dashboard", label: "Rescue Teams", icon: Users },
-    { href: "/admin/command-center", label: "Command Centre", icon: Radio, highlight: true },
-    { href: "/admin", label: "Admin Hub", icon: LayoutDashboard },
+    {
+      href: "/admin/command-center",
+      label: "Command Centre",
+      icon: Radio,
+      highlight: true,
+      restricted: !isAdmin,
+    },
+    {
+      href: "/admin",
+      label: "Admin Hub",
+      icon: LayoutDashboard,
+      restricted: !isAdmin,
+    },
   ];
 
   return (
@@ -225,6 +243,9 @@ export default function Navbar() {
                 >
                   {item.icon && <item.icon className="h-3.5 w-3.5" />}
                   <span>{item.label}</span>
+                  {item.restricted && (
+                    <Lock className="h-3 w-3 text-slate-400 shrink-0 ml-0.5" />
+                  )}
                 </Link>
               );
             })}
@@ -279,14 +300,21 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium ${
+              className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium ${
                 pathname === item.href
                   ? "bg-cobalt text-white shadow-lg"
                   : "text-slate-300 hover:bg-navy hover:text-white"
               }`}
             >
-              {item.icon && <item.icon className="h-4 w-4" />}
-              <span>{item.label}</span>
+              <div className="flex items-center gap-2.5">
+                {item.icon && <item.icon className="h-4 w-4" />}
+                <span>{item.label}</span>
+              </div>
+              {item.restricted && (
+                <span className="text-[10px] px-2 py-0.5 rounded bg-navy text-slate-400 border border-cobalt/20 font-mono flex items-center gap-1">
+                  <Lock className="h-2.5 w-2.5" /> Admin Only
+                </span>
+              )}
             </Link>
           ))}
 
@@ -413,14 +441,28 @@ export default function Navbar() {
                 <span>Sign In Page</span>
               </Link>
 
-              <Link
-                href="/auth/register"
-                onClick={() => setAuthModalOpen(false)}
-                className="flex-1 py-2 rounded-xl bg-cobalt hover:bg-cobalt/90 text-white text-center font-bold text-xs flex items-center justify-center gap-1.5"
-              >
-                <UserPlus className="h-3.5 w-3.5" />
-                <span>Register User</span>
-              </Link>
+              {currentUser.id !== "usr-guest" ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    logoutUser();
+                    setAuthModalOpen(false);
+                  }}
+                  className="flex-1 py-2 rounded-xl bg-red-600/20 hover:bg-red-600/30 text-red-300 border border-red-500/30 text-center font-bold text-xs flex items-center justify-center gap-1.5"
+                >
+                  <LogOut className="h-3.5 w-3.5" />
+                  <span>Sign Out</span>
+                </button>
+              ) : (
+                <Link
+                  href="/auth/register"
+                  onClick={() => setAuthModalOpen(false)}
+                  className="flex-1 py-2 rounded-xl bg-cobalt hover:bg-cobalt/90 text-white text-center font-bold text-xs flex items-center justify-center gap-1.5"
+                >
+                  <UserPlus className="h-3.5 w-3.5" />
+                  <span>Register User</span>
+                </Link>
+              )}
             </div>
           </div>
         </div>

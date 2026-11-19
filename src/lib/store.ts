@@ -34,17 +34,17 @@ import {
 
 const STORAGE_KEY_PREFIX = "pranraksha_";
 
-// Default authenticated operational profile for Tripura State EOC
+// Default unauthenticated visitor profile (Public Citizen)
 export const DEFAULT_USER: UserProfile = {
-  id: "usr-tripura-01",
-  fullName: "Ram Chandra Bhattacharjee",
-  phone: "+91 94361 12345",
-  email: "ram.chandra@pranraksha.gov.in",
-  role: "operator", // citizen | volunteer | team_member | operator | admin | super_admin
-  organization: "State Emergency Operations Centre (SEOC) Agartala, Tripura",
-  badgeNumber: "SEOC-TR-402",
+  id: "usr-guest",
+  fullName: "Guest Citizen",
+  phone: "+91 94361 00000",
+  email: "citizen@tripura.gov.in",
+  role: "citizen", // Default unauthenticated role is citizen; operator/admin requires sign-in
+  organization: "Tripura Public Safety Network",
+  badgeNumber: "CITIZEN-TR",
   district: "West Tripura",
-  isVerified: true,
+  isVerified: false,
 };
 
 export function usePranrakshaStore() {
@@ -130,6 +130,7 @@ export function usePranrakshaStore() {
       const updated: UserProfile = {
         ...currentUser,
         role,
+        isVerified: role !== "citizen",
         fullName:
           role === "citizen"
             ? "Ram Chandra Debbarma (Citizen, Agartala)"

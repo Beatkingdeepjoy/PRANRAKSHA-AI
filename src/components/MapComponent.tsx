@@ -395,7 +395,7 @@ export default function MapComponent({
 
     if (cleaned.includes("-") && cleaned.length >= 25) {
       setKeyInputError(
-        "⚠️ That is your Key ID from the URL (with hyphens). In MapTiler, look for the field 'Key' and click the Copy icon to copy your actual key token (e.g. 'aB1c2D...')."
+        "Notice: That is your Key ID from the URL (with hyphens). In MapTiler, look for the field 'Key' and click the Copy icon to copy your actual key token (e.g. 'aB1c2D...')."
       );
       return;
     }

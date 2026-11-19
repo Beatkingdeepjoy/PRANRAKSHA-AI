@@ -39,8 +39,8 @@ export default function RoutesPage() {
     durationMins: 18,
     safe: false,
     warnings: [
-      "⚠️ Severe Hazard: Route intersects Howrah River Baldakhal Inundation Zone (Water level 74cm above extreme danger mark).",
-      "⚠️ Caution: NH-8 Baramura Hill corridor blocked by active mudslide. Detour via Khowai link recommended.",
+      "Severe Hazard: Route intersects Howrah River Baldakhal Inundation Zone (Water level 74cm above extreme danger mark).",
+      "Caution: NH-8 Baramura Hill corridor blocked by active mudslide. Detour via Khowai link recommended.",
     ],
     detourRecommended: true,
   });
@@ -75,8 +75,8 @@ export default function RoutesPage() {
         durationMins: routeMode === "driving" ? 22 : 65,
         safe: false,
         warnings: [
-          "⚠️ Hazard Warning: Route crosses Katakhal drainage culvert near Battala flooded under 60cm water. Light vehicles cannot pass.",
-          "⚠️ Caution: Heavy rain causing reduced visibility and loose mud on hillside roads near Baramura foothills.",
+          "Hazard Warning: Route crosses Katakhal drainage culvert near Battala flooded under 60cm water. Light vehicles cannot pass.",
+          "Caution: Heavy rain causing reduced visibility and loose mud on hillside roads near Baramura foothills.",
         ],
         detourRecommended: true,
       });

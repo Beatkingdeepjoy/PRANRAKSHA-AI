@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import MapComponent from "@/components/MapComponent";
 import { usePranrakshaStore } from "@/lib/store";
@@ -28,11 +29,16 @@ import {
   Maximize2,
   RefreshCw,
   AlertTriangle,
+  Lock,
+  LogIn,
+  ShieldCheck,
 } from "lucide-react";
 import { getSeverityBadgeClass, getStatusBadgeClass } from "@/lib/utils";
 
 export default function CommandCenterPage() {
   const {
+    currentUser,
+    loginUser,
     incidents,
     rescueTeams,
     shelters,
@@ -49,11 +55,18 @@ export default function CommandCenterPage() {
   const [selectedIncidentId, setSelectedIncidentId] = useState<string | null>(
     incidents[0]?.id || null
   );
+  const [mobileTab, setMobileTab] = useState<"queue" | "map" | "details">("map");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedSeverity, setSelectedSeverity] = useState<string>("all");
   const [selectedStatus, setSelectedStatus] = useState<string>("all");
   const [selectedDistrict, setSelectedDistrict] = useState<string>("all");
+
+  const isAdminAuthorized =
+    currentUser.isVerified &&
+    (currentUser.role === "operator" ||
+      currentUser.role === "admin" ||
+      currentUser.role === "super_admin");
 
   // Filtered incidents
   const filteredIncidents = useMemo(() => {
@@ -91,6 +104,81 @@ export default function CommandCenterPage() {
   const dispatchedTeamsCount = rescueTeams.filter((t) => t.status === "dispatched" || t.status === "on_scene").length;
   const totalAffectedCount = incidents.reduce((acc, i) => acc + (i.affectedCount || 0), 0);
   const resolvedCount = incidents.filter((i) => i.status === "resolved" || i.status === "closed").length;
+
+  // Access control gate: unauthenticated visitors or citizens cannot access command centre
+  if (!isAdminAuthorized) {
+    return (
+      <div className="min-h-screen bg-navy text-foreground flex flex-col">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center p-4 sm:p-6 my-auto">
+          <div className="max-w-lg w-full p-6 sm:p-8 rounded-3xl bg-midnight border border-cobalt/40 shadow-2xl text-center space-y-6">
+            <div className="mx-auto h-16 w-16 rounded-2xl bg-critical/20 border border-critical/40 flex items-center justify-center text-critical shadow-lg shadow-critical/20">
+              <Lock className="h-8 w-8" />
+            </div>
+
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-critical/20 text-red-300 text-xs font-bold uppercase tracking-wider border border-critical/30">
+                <ShieldAlert className="h-3.5 w-3.5 text-critical" />
+                <span>SEOC Agartala Operational Area</span>
+              </div>
+              <h1 className="text-xl sm:text-2xl font-black text-white">
+                Operator Clearance Required
+              </h1>
+              <p className="text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
+                Live incident triage, radar radar basemaps, and NDRF rescue column assignments require verified SEOC Operator or Disaster Management credentials.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-navy/80 border border-cobalt/20 text-xs text-left space-y-1.5">
+              <div className="text-[10px] uppercase font-bold text-slate-400">Current Session State:</div>
+              <div className="font-bold text-white flex items-center justify-between">
+                <span>{currentUser.fullName}</span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-cobalt/30 text-sky-300 border border-cobalt/40 font-mono uppercase">
+                  {currentUser.role}
+                </span>
+              </div>
+              <div className="text-[11px] text-slate-400">
+                Status: <span className="text-amber-400 font-semibold">Public Citizen Access</span>
+              </div>
+            </div>
+
+            <div className="space-y-3 pt-1">
+              <Link
+                href="/auth/login"
+                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-cobalt to-electric hover:from-cobalt/90 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-cobalt/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <LogIn className="h-4 w-4" />
+                <span>Sign In as Emergency Operator</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => {
+                  loginUser(
+                    "ram.chandra@pranraksha.gov.in",
+                    "operator",
+                    "Ram Chandra Bhattacharjee (Dispatcher)"
+                  );
+                }}
+                className="w-full py-2.5 px-4 rounded-xl bg-navy/90 hover:bg-navy border border-cobalt/40 text-sky-300 hover:text-white font-semibold text-xs flex items-center justify-center gap-2 transition-all hover:border-sky-400"
+              >
+                <ShieldCheck className="h-4 w-4 text-emerald-400" />
+                <span>Demo Bypass: Authenticate as SEOC Dispatcher</span>
+              </button>
+
+              <Link
+                href="/citizen/dashboard"
+                className="block text-xs text-slate-400 hover:text-white underline pt-1"
+              >
+                ← Return to Citizen Public Safety Portal
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col bg-navy text-foreground overflow-hidden">
@@ -134,10 +222,51 @@ export default function CommandCenterPage() {
         </div>
       </div>
 
+      {/* Responsive In-Flow Mobile Section Selector (< lg, Never Overlays) */}
+      <div className="lg:hidden flex bg-midnight border-b border-cobalt/30 p-1.5 gap-1.5 text-xs">
+        <button
+          type="button"
+          onClick={() => setMobileTab("queue")}
+          className={`flex-1 py-2 px-1 text-center font-bold rounded-xl transition-all ${
+            mobileTab === "queue"
+              ? "bg-cobalt text-white shadow-md border border-sky-400/40"
+              : "text-slate-400 hover:text-white"
+          }`}
+        >
+          Queue ({filteredIncidents.length})
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileTab("map")}
+          className={`flex-1 py-2 px-1 text-center font-bold rounded-xl transition-all ${
+            mobileTab === "map"
+              ? "bg-cobalt text-white shadow-md border border-sky-400/40"
+              : "text-slate-400 hover:text-white"
+          }`}
+        >
+          GIS Radar Map
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileTab("details")}
+          className={`flex-1 py-2 px-1 text-center font-bold rounded-xl transition-all ${
+            mobileTab === "details"
+              ? "bg-cobalt text-white shadow-md border border-sky-400/40"
+              : "text-slate-400 hover:text-white"
+          }`}
+        >
+          Triage & Dispatch
+        </button>
+      </div>
+
       {/* Main 3-Column Command Centre Body */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left Triage & Filter Sidebar (320px) */}
-        <aside className="w-80 border-r border-cobalt/20 bg-midnight/90 flex flex-col overflow-hidden">
+        <aside
+          className={`w-full lg:w-80 border-r border-cobalt/20 bg-midnight/90 flex-col overflow-hidden ${
+            mobileTab === "queue" ? "flex" : "hidden lg:flex"
+          }`}
+        >
           {/* Search & Filter Header */}
           <div className="p-3 border-b border-cobalt/20 space-y-2">
             <div className="relative">
@@ -191,7 +320,10 @@ export default function CommandCenterPage() {
               return (
                 <button
                   key={inc.id}
-                  onClick={() => setSelectedIncidentId(inc.id)}
+                  onClick={() => {
+                    setSelectedIncidentId(inc.id);
+                    setMobileTab("details");
+                  }}
                   className={`w-full text-left p-3 rounded-xl border transition-all ${
                     isSelected
                       ? "bg-cobalt/20 border-cobalt ring-1 ring-sky-400 shadow-md"
@@ -231,7 +363,11 @@ export default function CommandCenterPage() {
         </aside>
 
         {/* Centre GIS Tactical Map (Flexible Width) */}
-        <main className="flex-1 relative flex flex-col overflow-hidden min-h-0">
+        <main
+          className={`flex-1 relative flex-col overflow-hidden min-h-0 ${
+            mobileTab === "map" ? "flex" : "hidden lg:flex"
+          }`}
+        >
           <div className="flex-1 relative min-h-[400px]">
             <MapComponent
               incidents={filteredIncidents}
@@ -241,7 +377,10 @@ export default function CommandCenterPage() {
               hazardZones={hazardZones}
               roadReports={roadReports}
               selectedIncidentId={selectedIncidentId}
-              onSelectIncident={(inc) => setSelectedIncidentId(inc.id)}
+              onSelectIncident={(inc) => {
+                setSelectedIncidentId(inc.id);
+                setMobileTab("details");
+              }}
               centerLat={23.8315}
               centerLng={91.2868}
               zoomLevel={12}
@@ -273,7 +412,29 @@ export default function CommandCenterPage() {
         </main>
 
         {/* Right Incident Deep-Dive & Quick Dispatch Panel (360px) */}
-        <aside className="w-96 border-l border-cobalt/20 bg-midnight/90 flex flex-col overflow-y-auto p-4 space-y-4">
+        <aside
+          className={`w-full lg:w-96 border-l border-cobalt/20 bg-midnight/90 flex-col overflow-y-auto p-4 space-y-4 ${
+            mobileTab === "details" ? "flex" : "hidden lg:flex"
+          }`}
+        >
+          {/* Mobile Back / Forward Header */}
+          <div className="lg:hidden flex items-center justify-between pb-2 border-b border-cobalt/20">
+            <button
+              type="button"
+              onClick={() => setMobileTab("queue")}
+              className="text-xs text-sky-400 hover:text-white font-bold flex items-center gap-1"
+            >
+              ← Back to Queue
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileTab("map")}
+              className="text-xs text-emerald-400 hover:text-white font-bold flex items-center gap-1"
+            >
+              View on Map →
+            </button>
+          </div>
+
           {selectedIncident ? (
             <div className="space-y-4">
               {/* Header */}
